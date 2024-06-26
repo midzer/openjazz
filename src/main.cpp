@@ -202,7 +202,7 @@ void startUp (const char *argv0, int pathCount, char *paths[]) {
 
 	// Use hard-coded data paths, if available
 #ifdef DATAPATH
-	gamePaths.add(createString(DATAPATH), PATH_TYPE_SYSTEM|PATH_TYPE_GAME);
+	gamePaths.add(createString("data/"), PATH_TYPE_SYSTEM|PATH_TYPE_GAME);
 #endif
 
 	// Default settings

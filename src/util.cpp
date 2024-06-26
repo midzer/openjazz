@@ -29,6 +29,7 @@
 #include "io/file.h"
 
 #include <string.h>
+#include <stdio.h>
 
 /**
  * Check if a file exists.
@@ -40,7 +41,7 @@
  */
 bool fileExists (const char * fileName, int pathType) {
 
-	File *file;
+	/*File *file;
 
 #ifdef VERBOSE
 	printf("Check: ");
@@ -56,7 +57,18 @@ bool fileExists (const char * fileName, int pathType) {
 
 	}
 
-	delete file;
+	delete file;*/
+	
+	FILE *file;
+    if ((file = fopen(fileName,"r")) != NULL) {
+        // file exists
+        fclose(file);
+    }
+    else {
+		//File not found, no memory leak since 'file' == NULL
+		//fclose(file) would cause an error
+		return false;
+    }
 
 	return true;
 

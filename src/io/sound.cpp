@@ -188,7 +188,7 @@ void openAudio () {
 
 #if OJ_SDL2
 	audioDevice = SDL_OpenAudioDevice(nullptr, 0, &asDesired, &audioSpec,
-		SDL_AUDIO_ALLOW_ANY_CHANGE);
+		SDL_AUDIO_ALLOW_FREQUENCY_CHANGE);
 
 	if(!audioDevice || SDL_AUDIO_ISFLOAT(audioSpec.format) ||
 		(SDL_AUDIO_BITSIZE(audioSpec.format) != 8 && SDL_AUDIO_BITSIZE(audioSpec.format) != 16)) {

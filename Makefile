@@ -2,19 +2,20 @@
 
 # Sane defaults
 CXX ?= g++ -std=c++11
-CXXFLAGS ?= -g -Wall -O2
+CXXFLAGS ?= -Wall -flto -O3
 DEFINES = -DSCALE -DPORTABLE
-CPPFLAGS = $(DEFINES) -Isrc -Iext/scale2x -Iext/psmplug -Iext/miniz -Iext/argparse
+CPPFLAGS = $(DEFINES) -Isrc -Iext/scale2x -Iext/psmplug -Iext/miniz -Iext/argparse -sUSE_SDL=2
+CXXFLAGS += -DDATAPATH
 
 # Network support
-CXXFLAGS += -DUSE_SOCKETS
+#CXXFLAGS += -DUSE_SOCKETS
 ifeq ($(OS),Windows_NT)
 	# Only needed under Windows.
 	LIBS += -lws2_32
 endif
 
 # SDL1.2 or SDL2
-SDLCONFIG ?= sdl-config
+SDLCONFIG ?= sdl2-config
 CXXFLAGS += $(shell $(SDLCONFIG) --cflags)
 LIBS += $(shell $(SDLCONFIG) --libs)
 

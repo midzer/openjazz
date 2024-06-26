@@ -476,7 +476,7 @@ int GameMenu::newGameEpisode (GameModeType mode) {
 		else if (count < 9) x = (count + 4) * 3;
 		else x = 50;
 
-		check = createFileName("LEVEL", 0, x);
+		check = createFileName("data/LEVEL", 0, x);
 		exists[count] = fileExists(check, PATH_TYPE_GAME);
 		delete[] check;
 
@@ -487,7 +487,7 @@ int GameMenu::newGameEpisode (GameModeType mode) {
 
 	if (mode == M_SINGLE) {
 
-		check = createFileName("BONUSMAP", 0);
+		check = createFileName("data/BONUSMAP", 0);
 		exists[10] = fileExists(check, PATH_TYPE_GAME);
 		delete[] check;
 
