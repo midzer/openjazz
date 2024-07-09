@@ -4,7 +4,7 @@
 CXX ?= g++ -std=c++11
 CXXFLAGS ?= -Wall -flto -O3
 DEFINES = -DSCALE -DPORTABLE
-CPPFLAGS = $(DEFINES) -Isrc -Iext/scale2x -Iext/psmplug -Iext/miniz -Iext/argparse -sUSE_SDL=2
+CPPFLAGS = $(DEFINES) -Isrc -Iext/scale2x -Iext/psmplug -Iext/miniz -Iext/argparse
 CXXFLAGS += -DDATAPATH
 
 # Network support
