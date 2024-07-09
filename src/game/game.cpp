@@ -256,18 +256,18 @@ int Game::playLevel (char* fileName, bool intro, bool checkpoint) {
 
 		if (intro) {
 
-			JJ1Planet *planet;
+			JJ1Planet *planet = NULL;
 			char *planetFileName = NULL;
 
 			planetFileName = createFileName("PLANET", level->getWorld());
 
 			try {
 
-				planet = new JJ1Planet(planetFileName, planetId);
+				planet = new JJ1Planet(planetFileName);
 
 			} catch (int e) {
 
-				planet = NULL;
+				throw e;
 
 			}
 
@@ -275,16 +275,20 @@ int Game::playLevel (char* fileName, bool intro, bool checkpoint) {
 
 			if (planet) {
 
-				if (planet->play() == E_QUIT) {
+				int id = planet->getId();
+				if (id != planetId) {
+					// Only approaching a planet if not already there
+					planetId = id;
 
-					delete planet;
-					delete level;
+					if (planet->play() == E_QUIT) {
 
-					return E_QUIT;
+						delete planet;
+						delete level;
 
+						return E_QUIT;
+
+					}
 				}
-
-				planetId = planet->getId();
 
 				delete planet;
 

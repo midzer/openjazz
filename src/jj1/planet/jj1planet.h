@@ -37,7 +37,7 @@ class JJ1Planet {
 		int       id; /// World number
 
 	public:
-		JJ1Planet  (char * fileName, int previous);
+		JJ1Planet  (char * fileName);
 		~JJ1Planet ();
 
 		int getId ();

@@ -42,7 +42,7 @@
  * @param fileName Name of the file containing the planet data
  * @param previous The ID of the last planet approach sequence
  */
-JJ1Planet::JJ1Planet (char * fileName, int previous) {
+JJ1Planet::JJ1Planet (char * fileName) {
 
 	File *file;
 	unsigned char *pixels;
@@ -54,21 +54,11 @@ JJ1Planet::JJ1Planet (char * fileName, int previous) {
 
 	} catch (int e) {
 
-		throw;
+		throw E_FILE;
 
 	}
 
 	id = file->loadShort();
-
-	if (id == previous) {
-
-		// Not approaching a planet if already there
-
-		delete file;
-
-		throw E_NONE;
-
-	}
 
 	// Load planet name
 	name = file->loadString();
